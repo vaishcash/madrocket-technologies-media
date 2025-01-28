@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../components/firebase";
+import { auth } from "../config/firebase";
 import toast from "react-hot-toast";
 
 export default function Login() {
