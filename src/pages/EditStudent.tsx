@@ -86,7 +86,13 @@ const EditStudent: React.FC = () => {
         return;
       }
       const studentDocRef = doc(db, "students", id);
-      await updateDoc(studentDocRef, formData); // Update the student document in Firestore
+      const updatedFormData = Object.fromEntries(
+        Object.entries(formData).map(([key, value]) => [
+          `student.${key}`,
+          value,
+        ])
+      );
+      await updateDoc(studentDocRef, updatedFormData); // Update the student document in Firestore
       alert("Student details updated successfully!");
       navigate(`/students`); // Redirect to the View page after save
     } catch (error) {
