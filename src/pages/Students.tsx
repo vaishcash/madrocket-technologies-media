@@ -7,7 +7,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "../components/firebase";
+import { db } from "../config/firebase";
 import toast from "react-hot-toast";
 
 interface Student {
@@ -80,9 +80,9 @@ export default function Students() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        console.log(formData);
-         alert("Data added successfully!");
-      
+      console.log(formData);
+      alert("Data added successfully!");
+
       await addDoc(collection(db, "students"), formData);
       toast.success("Student added successfully");
       setIsModalOpen(false);
