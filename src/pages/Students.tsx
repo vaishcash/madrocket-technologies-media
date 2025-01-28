@@ -6,9 +6,11 @@ import {
   getDocs,
   deleteDoc,
   doc,
+
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 interface Student {
   id: string;
@@ -174,12 +176,18 @@ export default function Students() {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <button className="text-blue-600 hover:text-blue-900 mr-3">
-                    <Eye className="h-5 w-5" />
-                  </button>
-                  <button className="text-indigo-600 hover:text-indigo-900 mr-3">
-                    <Edit className="h-5 w-5" />
-                  </button>
+                  <Link to={`/students/${student.id}`}>
+                    <button className="text-blue-600 hover:text-blue-900">
+                      <Eye className="h-5 w-5" />
+                    </button>
+                  </Link>
+
+                  <Link to={`/students/edit/${student.id}`}>
+                    <button className="text-blue-600 hover:text-blue-900">
+                      <Edit className="h-5 w-5" />
+                    </button>
+                  </Link>
+
                   <button
                     onClick={() => handleDelete(student.id)}
                     className="text-red-600 hover:text-red-900"
