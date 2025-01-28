@@ -1,7 +1,6 @@
-
 import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 import { LogOut, Users, LayoutDashboard } from "lucide-react";
-import { auth } from "../components/firebase";
+import { auth } from "../config/firebase";
 import toast from "react-hot-toast";
 
 export default function Dashboard() {
@@ -31,7 +30,7 @@ export default function Dashboard() {
         </div>
         <nav className="mt-6 px-3">
           <Link
-            to="/dashboard/students"
+            to="/students"
             className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
               location.pathname.includes("/students")
                 ? "bg-indigo-50 text-indigo-600"
