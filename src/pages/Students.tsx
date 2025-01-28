@@ -6,11 +6,10 @@ import {
   getDocs,
   deleteDoc,
   doc,
-
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Student {
   id: string;
@@ -96,6 +95,7 @@ export default function Students() {
     }
   };
 
+  const navigate = useNavigate();
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
@@ -118,15 +118,25 @@ export default function Students() {
             Students
           </h1>
         </div>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
-        >
-          <Plus className="h-5 w-5 mr-2" />
-          Add Student
-        </button>
-      </div>
 
+        <div className="flex direction-row gap-1">
+          {/* Back Button */}
+          <button
+            onClick={() => navigate(`/dashboard`)} // Navigate to the previous page
+            className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
+          >
+            &larr; Back
+          </button>
+
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
+          >
+            <Plus className="h-5 w-5 mr-2" />
+            Add Student
+          </button>
+        </div>
+      </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
