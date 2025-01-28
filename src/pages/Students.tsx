@@ -120,7 +120,7 @@ export default function Students() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
         >
           <Plus className="h-5 w-5 mr-2" />
           Add Student
@@ -175,15 +175,15 @@ export default function Students() {
                     {student.rollNumber}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap  text-sm text-gray-500">
                   <Link to={`/students/${student.id}`}>
-                    <button className="text-blue-600 hover:text-blue-900">
+                    <button className="text-blue-600  hover:text-blue-900">
                       <Eye className="h-5 w-5" />
                     </button>
                   </Link>
 
                   <Link to={`/students/edit/${student.id}`}>
-                    <button className="text-blue-600 hover:text-blue-900">
+                    <button className="text-blue-600 px-8 hover:text-blue-900">
                       <Edit className="h-5 w-5" />
                     </button>
                   </Link>

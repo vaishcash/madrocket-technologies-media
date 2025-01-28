@@ -19,42 +19,45 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg">
-        <div className="h-16 flex items-center px-6 border-b">
-          <LayoutDashboard className="h-6 w-6 text-indigo-600" />
-          <span className="ml-3 text-lg font-semibold text-gray-900">
-            Dashboard
-          </span>
+    <div className="min-h-screen bg-blue-200 flex justify-center items-center">
+      {/* Main Content Container */}
+      <div className="flex flex-col w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+        {/* Header Section */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center space-x-3">
+            <LayoutDashboard className="h-8 w-8 text-indigo-600" />
+            <span className="text-2xl font-semibold text-gray-800">
+              Dashboard
+            </span>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="flex items-center px-4 py-2 text-white bg-cyan-600 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            <LogOut className="h-5 w-5" />
+            <span className="ml-2">Logout</span>
+          </button>
         </div>
-        <nav className="mt-6 px-3">
+
+        {/* Navigation Links */}
+        <nav className="space-y-6 mb-8">
           <Link
             to="/students"
-            className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+            className={`flex items-center px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
               location.pathname.includes("/students")
-                ? "bg-indigo-50 text-indigo-600"
-                : "text-gray-700 hover:bg-gray-100"
+                ? "bg-indigo-100 text-indigo-600"
+                : "text-gray-700 hover:bg-gray-200"
             }`}
           >
             <Users className="h-5 w-5" />
             <span className="ml-3">Students</span>
           </Link>
-          <button
-            onClick={handleLogout}
-            className="w-full mt-2 flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            <LogOut className="h-5 w-5" />
-            <span className="ml-3">Logout</span>
-          </button>
         </nav>
-      </div>
 
-      {/* Main Content */}
-      <div className="flex-1">
-        <main className="p-6">
+        {/* Main Content (Outlet) */}
+        <div className="flex-1">
           <Outlet />
-        </main>
+        </div>
       </div>
     </div>
   );
