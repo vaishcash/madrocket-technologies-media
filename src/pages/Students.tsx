@@ -112,103 +112,106 @@ export default function Students() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between m-5 ">
-        <div className="flex items-center">
-          <GraduationCap className="h-8 w-8 text-indigo-600" />
-          <h1 className="ml-3 text-2xl font-semibold text-gray-900">
+        <div className="flex items-center ">
+          <GraduationCap className="h-8 w-8 text-cyan-600 md:h-6 md:w-6" />
+          <h1 className="ml-3 text-2xl font-semibold text-gray-900 max-md:text-md">
             Students
           </h1>
         </div>
 
-        <div className="flex direction-row gap-1">
+        <div className="flex direction-row gap-1 ">
           {/* Back Button */}
           <button
             onClick={() => navigate(`/dashboard`)} // Navigate to the previous page
-            className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
+            className="flex items-center px-2 py-2  bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors max-md:text-sm  "
           >
-            &larr; Back
+            &larr; <span className="max-md:hidden">Back</span>
           </button>
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors"
+            className="flex items-center px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-900 transition-colors max-md:text-sm  "
           >
-            <Plus className="h-5 w-5 mr-2" />
-            Add Student
+            <Plus className="h-5 w-5 mr-2  max-md:h-4 max-md:w-4 " />
+            <span className="max-md:hidden">Add</span>
+            Student
           </button>
         </div>
       </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Class
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Section
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Roll Number
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {students.map((student) => (
-              <tr key={student.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    {student.id.slice(0, 8)}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {student.firstName} {student.lastName}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-500">{student.class}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-500">{student.section}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-500">
-                    {student.rollNumber}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap  text-sm text-gray-500">
-                  <Link to={`/students/${student.id}`}>
-                    <button className="text-blue-600  hover:text-blue-900">
-                      <Eye className="h-5 w-5" />
-                    </button>
-                  </Link>
-
-                  <Link to={`/students/edit/${student.id}`}>
-                    <button className="text-blue-600 px-8 hover:text-blue-900">
-                      <Edit className="h-5 w-5" />
-                    </button>
-                  </Link>
-
-                  <button
-                    onClick={() => handleDelete(student.id)}
-                    className="text-red-600 hover:text-red-900"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase max-md:hidden tracking-wider">
+                  ID
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Class
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider max-md:hidden">
+                  Section
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider max-md:hidden">
+                  Roll Number
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {students.map((student) => (
+                <tr key={student.id} className="hover:bg-gray-50 ">
+                  <td className="px-6 py-4 whitespace-nowrap max-md:hidden ">
+                    <div className="text-sm text-gray-900">
+                      {student.id.slice(0, 8)}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">
+                      {student.firstName} {student.lastName}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-500">{student.class}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap max-md:hidden">
+                    <div className="text-sm text-gray-500">
+                      {student.section}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap max-md:hidden">
+                    <div className="text-sm text-gray-500">
+                      {student.rollNumber}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <Link to={`/students/${student.id}`}>
+                      <button className="text-blue-600 hover:text-blue-900">
+                        <Eye className="h-5 w-5" />
+                      </button>
+                    </Link>
+                    <Link to={`/students/edit/${student.id}`}>
+                      <button className="text-blue-600 px-8 max-md:px-4 hover:text-blue-900">
+                        <Edit className="h-5 w-5" />
+                      </button>
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(student.id)}
+                      className="text-red-600 hover:text-red-900"
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Add Student Modal */}
